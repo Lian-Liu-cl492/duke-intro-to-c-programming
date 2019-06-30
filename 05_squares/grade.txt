@@ -1,0 +1,13 @@
+Grading at Sun Jun 30 11:27:46 UTC 2019
+Trying to compile your code and link with squares_test.o
+squares.c: In function ‘squares’:
+squares.c:48:40: error: suggest parentheses around ‘&&’ within ‘||’ [-Werror=parentheses]
+       if(isInRange(x, x_offset, size2) && isAtBorder(y, y_offset, size2-1) || isInRange(y, y_offset, size2) && isAtBorder(x, x_offset, size2-1))
+                                        ^
+squares.c:57:28: error: suggest parentheses around ‘&&’ within ‘||’ [-Werror=parentheses]
+  if(isInRange(x, 0, size1) && isAtBorder(y, 0, size1-1) || isInRange(y, 0, size1) && isAtBorder(x, 0, size1-1))
+                            ^
+cc1: all warnings being treated as errors
+Could not compile your code
+
+Overall Grade: FAILED
