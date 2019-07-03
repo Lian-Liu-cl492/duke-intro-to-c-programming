@@ -1,0 +1,16 @@
+aaaaa bbbbb
+aaaab bbbbb
+aaabb aabbb
+abcde aabcd
+aabbc aabcd
+a aaaaa
+!!!!!! 111
+11223 12345
+11123 11234
+11111
+111111111
+1
+11111 11111 11111
+1 1 1
+111111 11111 11111
+\n\na \b\b\b
