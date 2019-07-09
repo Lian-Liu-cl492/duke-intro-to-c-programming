@@ -52,8 +52,21 @@ void print_card(card_t c) {
 
 card_t card_from_letters(char value_let, char suit_let) {
   card_t temp;
-  temp.value = value_let;
-  temp.suit = suit_let;
+  switch(value_let){
+    case 'A': temp.value = VALUE_ACE;
+    case 'K': temp.value = VALUE_KING;
+    case 'Q': temp.value = VALUE_QUEEN;
+    case 'J': temp.value = VALUE_JACK;
+    case '0': temp.value = 10;
+    default: temp.value = value_let - '0';
+  }
+  switch(suit_let){
+    case 's': temp.suit = SPADES; break;
+    case 'h': temp.suit = HEARTS; break;
+    case 'd': temp.suit = DIAMONDS; break;
+    case 'c': temp.suit = CLUBS; break;
+    default: temp.suit = NUM_SUITS;
+  }
   assert_card_valid(temp);
   return temp;
 }
