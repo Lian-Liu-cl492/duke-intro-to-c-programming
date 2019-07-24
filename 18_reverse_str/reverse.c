@@ -3,7 +3,19 @@
 #include <string.h>
 
 void reverse(char * str) {
-  //WRITE ME!
+  char * head = str;
+  char * tail = str;
+  char temp;
+  while(*(tail+1) !='\0'){
+    tail++;
+  }
+  while(tail > head){
+    temp = *head;
+    *head = *tail;
+    *tail = temp;
+    head++;
+    tail--;
+  }
 }
 
 int main(void) {
