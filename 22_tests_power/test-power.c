@@ -17,6 +17,7 @@ int main(void){
   check(2, 1, 2);
   check(2, 3, 8);
   check(10000, 2, 100000000);
+  printf("Success!\n");
   return EXIT_SUCCESS;
 }
 
