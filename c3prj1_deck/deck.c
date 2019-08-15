@@ -20,8 +20,6 @@ void shuffle(deck_t * d){
   card_t * temp;
   for(int i=0; i<d->n_cards; i++){
     int rand_num = random()%d->n_cards;
-    while( rand_num== i)
-      rand_num = random()%d->n_cards;
 
     temp = *((d->cards)+i);
     *((d->cards)+i) = *((d->cards)+rand_num);
