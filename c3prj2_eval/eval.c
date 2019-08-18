@@ -59,7 +59,7 @@ int is_n_length_straight_at(deck_t * hand, size_t index, suit_t fs, int n){
   if( need_flush && start->suit != fs)
     return 0;
 
-  for(int i=index+1; i<hand->n_cards - index; i++){
+  for(int i=index+1; i<hand->n_cards; i++){
     if( need_flush && hand->cards[i]->suit != fs)
       continue;
     int diff = current->value - hand->cards[i]->value;
