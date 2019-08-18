@@ -18,6 +18,8 @@ int card_ptr_comp(const void * vp1, const void * vp2) {
 }
 
 suit_t flush_suit(deck_t * hand) {
+  if(hand ==NULL)
+    return NUM_SUITS;
   int suits[5] = {0};
   for(int i=0; i<hand->n_cards; i++){
     suits[hand->cards[i]->suit]++;
@@ -125,6 +127,11 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 }
 
 int compare_hands(deck_t * hand1, deck_t * hand2) {
+  if (hand2 == NULL)
+    return 1;
+  if (hand1 == NULL)
+    return -1;
+
   qsort(hand1->cards, hand1->n_cards, sizeof(card_t *), card_ptr_comp);
   qsort(hand2->cards, hand2->n_cards, sizeof(card_t *), card_ptr_comp);
   hand_eval_t hand1_eval = evaluate_hand(hand1); 
