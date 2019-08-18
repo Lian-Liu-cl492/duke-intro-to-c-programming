@@ -1,0 +1,942 @@
+Grading at Sun Aug 18 16:38:12 UTC 2019
+Compiling your code
+rm -f test poker cards.o my-test-main.o *~
+cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o deck.o deck.c
+cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o eval.o eval.c
+cc -ggdb3 -Wall -Werror -pedantic -std=gnu99   -c -o cards.o cards.c
+gcc -o test-eval -ggdb3 deck.o deck-c4.o eval-c4.o eval.o test-eval.o cards.o input.o future.o
+Testcase 1: Trying hands with nothing
+Valgrind returned an error status
+==300== Memcheck, a memory error detector
+==300== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==300== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==300== Command: ./test-eval inp.1.txt
+==300== Parent PID: 299
+==300== 
+==300== Conditional jump or move depends on uninitialised value(s)
+==300==    at 0x402BA7: ranking_to_string (cards.c:13)
+==300==    by 0x4027E5: describe_hand (test-eval.c:69)
+==300==    by 0x402A06: main (test-eval.c:116)
+==300== 
+==300== Conditional jump or move depends on uninitialised value(s)
+==300==    at 0x402BA7: ranking_to_string (cards.c:13)
+==300==    by 0x4027E5: describe_hand (test-eval.c:69)
+==300==    by 0x402A26: main (test-eval.c:119)
+==300== 
+==300== Conditional jump or move depends on uninitialised value(s)
+==300==    at 0x401B47: compare_hands (eval.c:133)
+==300==    by 0x402A7B: main (test-eval.c:124)
+==300== 
+==300== Conditional jump or move depends on uninitialised value(s)
+==300==    at 0x401B58: compare_hands (eval.c:135)
+==300==    by 0x402A7B: main (test-eval.c:124)
+==300== 
+==300== Invalid read of size 8
+==300==    at 0x401A02: build_hand_from_match (eval.c:119)
+==300==    by 0x4023F3: evaluate_hand (eval.c:286)
+==300==    by 0x4027DB: describe_hand (test-eval.c:68)
+==300==    by 0x402A06: main (test-eval.c:116)
+==300==  Address 0x520a308 is 0 bytes after a block of size 40 alloc'd
+==300==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==300==    by 0x400FD1: add_card_to (deck-c4.c:29)
+==300==    by 0x403128: hand_from_string (input.c:49)
+==300==    by 0x40298B: main (test-eval.c:110)
+==300== 
+==300== Invalid read of size 4
+==300==    at 0x401A05: build_hand_from_match (eval.c:119)
+==300==    by 0x4023F3: evaluate_hand (eval.c:286)
+==300==    by 0x4027DB: describe_hand (test-eval.c:68)
+==300==    by 0x402A06: main (test-eval.c:116)
+==300==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==300== 
+==300== 
+==300== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==300==  Access not within mapped region at address 0x0
+==300==    at 0x401A05: build_hand_from_match (eval.c:119)
+==300==    by 0x4023F3: evaluate_hand (eval.c:286)
+==300==    by 0x4027DB: describe_hand (test-eval.c:68)
+==300==    by 0x402A06: main (test-eval.c:116)
+==300==  If you believe this happened as a result of a stack
+==300==  overflow in your program's main thread (unlikely but
+==300==  possible), you can try to increase the size of the
+==300==  main thread stack using the --main-stacksize= flag.
+==300==  The main thread stack size used in this run was 8388608.
+==300== 
+==300== HEAP SUMMARY:
+==300==     in use at exit: 864 bytes in 16 blocks
+==300==   total heap usage: 202 allocs, 186 frees, 12,472 bytes allocated
+==300== 
+==300== LEAK SUMMARY:
+==300==    definitely lost: 0 bytes in 0 blocks
+==300==    indirectly lost: 0 bytes in 0 blocks
+==300==      possibly lost: 0 bytes in 0 blocks
+==300==    still reachable: 864 bytes in 16 blocks
+==300==         suppressed: 0 bytes in 0 blocks
+==300== Rerun with --leak-check=full to see details of leaked memory
+==300== 
+==300== For counts of detected and suppressed errors, rerun with: -v
+==300== Use --track-origins=yes to see where uninitialised values come from
+==300== ERROR SUMMARY: 14 errors from 6 contexts (suppressed: 0 from 0)
+Testcase 2: Trying hands with pairs
+Valgrind returned an error status
+==305== Memcheck, a memory error detector
+==305== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==305== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==305== Command: ./test-eval inp.2.txt
+==305== Parent PID: 304
+==305== 
+==305== Conditional jump or move depends on uninitialised value(s)
+==305==    at 0x402BA7: ranking_to_string (cards.c:13)
+==305==    by 0x4027E5: describe_hand (test-eval.c:69)
+==305==    by 0x402A06: main (test-eval.c:116)
+==305== 
+==305== Conditional jump or move depends on uninitialised value(s)
+==305==    at 0x402BA7: ranking_to_string (cards.c:13)
+==305==    by 0x4027E5: describe_hand (test-eval.c:69)
+==305==    by 0x402A26: main (test-eval.c:119)
+==305== 
+==305== Conditional jump or move depends on uninitialised value(s)
+==305==    at 0x401B47: compare_hands (eval.c:133)
+==305==    by 0x402A7B: main (test-eval.c:124)
+==305== 
+==305== Conditional jump or move depends on uninitialised value(s)
+==305==    at 0x401B58: compare_hands (eval.c:135)
+==305==    by 0x402A7B: main (test-eval.c:124)
+==305== 
+==305== 
+==305== HEAP SUMMARY:
+==305==     in use at exit: 0 bytes in 0 blocks
+==305==   total heap usage: 232 allocs, 232 frees, 13,028 bytes allocated
+==305== 
+==305== All heap blocks were freed -- no leaks are possible
+==305== 
+==305== For counts of detected and suppressed errors, rerun with: -v
+==305== Use --track-origins=yes to see where uninitialised values come from
+==305== ERROR SUMMARY: 16 errors from 4 contexts (suppressed: 0 from 0)
+Testcase 3: Trying hands with 2 pairs
+Valgrind returned an error status
+==310== Memcheck, a memory error detector
+==310== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==310== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==310== Command: ./test-eval inp.3.txt
+==310== Parent PID: 309
+==310== 
+==310== Conditional jump or move depends on uninitialised value(s)
+==310==    at 0x402BA7: ranking_to_string (cards.c:13)
+==310==    by 0x4027E5: describe_hand (test-eval.c:69)
+==310==    by 0x402A06: main (test-eval.c:116)
+==310== 
+==310== Conditional jump or move depends on uninitialised value(s)
+==310==    at 0x402BA7: ranking_to_string (cards.c:13)
+==310==    by 0x4027E5: describe_hand (test-eval.c:69)
+==310==    by 0x402A26: main (test-eval.c:119)
+==310== 
+==310== Conditional jump or move depends on uninitialised value(s)
+==310==    at 0x401B47: compare_hands (eval.c:133)
+==310==    by 0x402A7B: main (test-eval.c:124)
+==310== 
+==310== Conditional jump or move depends on uninitialised value(s)
+==310==    at 0x401B58: compare_hands (eval.c:135)
+==310==    by 0x402A7B: main (test-eval.c:124)
+==310== 
+==310== 
+==310== HEAP SUMMARY:
+==310==     in use at exit: 0 bytes in 0 blocks
+==310==   total heap usage: 544 allocs, 544 frees, 18,344 bytes allocated
+==310== 
+==310== All heap blocks were freed -- no leaks are possible
+==310== 
+==310== For counts of detected and suppressed errors, rerun with: -v
+==310== Use --track-origins=yes to see where uninitialised values come from
+==310== ERROR SUMMARY: 40 errors from 4 contexts (suppressed: 0 from 0)
+Testcase 4: Trying hands with 3 of a kind
+Valgrind returned an error status
+==315== Memcheck, a memory error detector
+==315== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==315== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==315== Command: ./test-eval inp.4.txt
+==315== Parent PID: 314
+==315== 
+==315== Conditional jump or move depends on uninitialised value(s)
+==315==    at 0x402BA7: ranking_to_string (cards.c:13)
+==315==    by 0x4027E5: describe_hand (test-eval.c:69)
+==315==    by 0x402A06: main (test-eval.c:116)
+==315== 
+==315== Conditional jump or move depends on uninitialised value(s)
+==315==    at 0x402BA7: ranking_to_string (cards.c:13)
+==315==    by 0x4027E5: describe_hand (test-eval.c:69)
+==315==    by 0x402A26: main (test-eval.c:119)
+==315== 
+==315== Conditional jump or move depends on uninitialised value(s)
+==315==    at 0x401B47: compare_hands (eval.c:133)
+==315==    by 0x402A7B: main (test-eval.c:124)
+==315== 
+==315== Conditional jump or move depends on uninitialised value(s)
+==315==    at 0x401B58: compare_hands (eval.c:135)
+==315==    by 0x402A7B: main (test-eval.c:124)
+==315== 
+==315== 
+==315== HEAP SUMMARY:
+==315==     in use at exit: 0 bytes in 0 blocks
+==315==   total heap usage: 352 allocs, 352 frees, 15,296 bytes allocated
+==315== 
+==315== All heap blocks were freed -- no leaks are possible
+==315== 
+==315== For counts of detected and suppressed errors, rerun with: -v
+==315== Use --track-origins=yes to see where uninitialised values come from
+==315== ERROR SUMMARY: 24 errors from 4 contexts (suppressed: 0 from 0)
+Testcase 5: Trying hands with straights
+Valgrind returned an error status
+==320== Memcheck, a memory error detector
+==320== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==320== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==320== Command: ./test-eval inp.5.txt
+==320== Parent PID: 319
+==320== 
+==320== Invalid read of size 8
+==320==    at 0x401A02: build_hand_from_match (eval.c:119)
+==320==    by 0x4023F3: evaluate_hand (eval.c:286)
+==320==    by 0x4027DB: describe_hand (test-eval.c:68)
+==320==    by 0x402A06: main (test-eval.c:116)
+==320==  Address 0x52056c8 is 0 bytes after a block of size 40 alloc'd
+==320==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==320==    by 0x400FD1: add_card_to (deck-c4.c:29)
+==320==    by 0x403128: hand_from_string (input.c:49)
+==320==    by 0x40298B: main (test-eval.c:110)
+==320== 
+==320== Invalid read of size 4
+==320==    at 0x401A05: build_hand_from_match (eval.c:119)
+==320==    by 0x4023F3: evaluate_hand (eval.c:286)
+==320==    by 0x4027DB: describe_hand (test-eval.c:68)
+==320==    by 0x402A06: main (test-eval.c:116)
+==320==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==320== 
+==320== 
+==320== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==320==  Access not within mapped region at address 0x0
+==320==    at 0x401A05: build_hand_from_match (eval.c:119)
+==320==    by 0x4023F3: evaluate_hand (eval.c:286)
+==320==    by 0x4027DB: describe_hand (test-eval.c:68)
+==320==    by 0x402A06: main (test-eval.c:116)
+==320==  If you believe this happened as a result of a stack
+==320==  overflow in your program's main thread (unlikely but
+==320==  possible), you can try to increase the size of the
+==320==  main thread stack using the --main-stacksize= flag.
+==320==  The main thread stack size used in this run was 8388608.
+==320== 
+==320== HEAP SUMMARY:
+==320==     in use at exit: 864 bytes in 16 blocks
+==320==   total heap usage: 28 allocs, 12 frees, 9,256 bytes allocated
+==320== 
+==320== LEAK SUMMARY:
+==320==    definitely lost: 0 bytes in 0 blocks
+==320==    indirectly lost: 0 bytes in 0 blocks
+==320==      possibly lost: 0 bytes in 0 blocks
+==320==    still reachable: 864 bytes in 16 blocks
+==320==         suppressed: 0 bytes in 0 blocks
+==320== Rerun with --leak-check=full to see details of leaked memory
+==320== 
+==320== For counts of detected and suppressed errors, rerun with: -v
+==320== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+Testcase 6: Trying hands with flushes
+ Checking the output 
+Line_3_did_not_match
+Line_5_did_not_match
+Line_8_did_not_match
+Line_11_did_not_match
+Line_13_did_not_match
+Line_16_did_not_match
+Line_23_did_not_match
+Line_25_did_not_match
+Line_28_did_not_match
+Line_31_did_not_match
+Line_33_did_not_match
+Line_36_did_not_match
+Line_43_did_not_match
+Line_45_did_not_match
+Line_48_did_not_match
+Line_51_did_not_match
+Line_53_did_not_match
+Line_56_did_not_match
+Line_63_did_not_match
+Line_65_did_not_match
+Line_66_did_not_match
+Line_68_did_not_match
+Line_71_did_not_match
+Line_73_did_not_match
+Line_76_did_not_match
+Line_83_did_not_match
+Line_85_did_not_match
+Line_88_did_not_match
+Line_91_did_not_match
+Line_93_did_not_match
+Line_96_did_not_match
+Line_99_did_not_match
+Line_103_did_not_match
+Line_105_did_not_match
+Line_108_did_not_match
+Line_111_did_not_match
+Line_113_did_not_match
+Line_116_did_not_match
+Line_123_did_not_match
+Line_125_did_not_match
+Line_128_did_not_match
+Line_131_did_not_match
+Line_133_did_not_match
+Line_136_did_not_match
+Line_143_did_not_match
+Line_145_did_not_match
+Line_148_did_not_match
+Line_151_did_not_match
+Line_153_did_not_match
+Line_156_did_not_match
+Line_163_did_not_match
+Line_165_did_not_match
+Line_168_did_not_match
+Line_171_did_not_match
+Line_173_did_not_match
+Line_176_did_not_match
+Line_183_did_not_match
+Line_185_did_not_match
+Line_188_did_not_match
+Line_191_did_not_match
+Line_193_did_not_match
+Line_196_did_not_match
+Line_203_did_not_match
+Line_205_did_not_match
+Line_208_did_not_match
+Line_211_did_not_match
+Line_213_did_not_match
+Line_216_did_not_match
+Line_223_did_not_match
+Line_225_did_not_match
+Line_228_did_not_match
+Line_231_did_not_match
+Line_233_did_not_match
+Line_236_did_not_match
+Line_243_did_not_match
+Line_245_did_not_match
+Line_248_did_not_match
+Line_251_did_not_match
+Line_253_did_not_match
+Line_256_did_not_match
+Line_263_did_not_match
+Line_265_did_not_match
+Line_268_did_not_match
+Line_271_did_not_match
+Line_273_did_not_match
+Line_276_did_not_match
+Line_279_did_not_match
+Line_283_did_not_match
+Line_285_did_not_match
+Line_288_did_not_match
+Line_291_did_not_match
+Line_293_did_not_match
+Line_296_did_not_match
+Line_299_did_not_match
+Your file did not match the expected ouput
+ - Output did not match, testcase failed
+Hand 1:								Hand 1:
+--------							--------
+As Kc Qs Js 0s 2s 					      |	2s0sJsQsKcAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight at index 0					      |	 - The most of a kind is 1 of a kind (at index 0 / value 2)
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs Js 0s 2s 		      |	 - 5 cards used for hand: 2s0sJsQsAs
+Hand 2:								Hand 2:
+--------							--------
+As Ks Qc Js 0s 3s 					      |	3s0sJsQcKsAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight at index 0					      |	 - The most of a kind is 1 of a kind (at index 0 / value 3)
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Ks Js 0s 3s 		      |	 - 5 cards used for hand: 3s0sJsKsAs
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 2 wins!							Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Kh Jh 9h 8s 4h 2h 					      |	8s9h2h4hJhKh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value K)   |	 - The most of a kind is 1 of a kind (at index 0 / value 8)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh Jh 9h 4h 2h 		      |	 - 5 cards used for hand: 9h2h4hJhKh
+Hand 2:								Hand 2:
+--------							--------
+Qd 9d 7d 6c 5d 2d 					      |	2d5d6c7d9dQd
+ - Flush in suit d						 - Flush in suit d
+ - The most of a kind is 1 of a kind (at index 0 / value Q)   |	 - The most of a kind is 1 of a kind (at index 0 / value 2)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Qd 9d 7d 5d 2d 		      |	 - 5 cards used for hand: 2d5d7d9dQd
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Kc Jc 9c 7h 4c 3c 2h 					      |	9cJc2h3c7hKc4c
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value K)   |	 - The most of a kind is 1 of a kind (at index 0 / value 9)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kc Jc 9c 4c 3c 		      |	 - 5 cards used for hand: 9cJc3cKc4c
+Hand 2:								Hand 2:
+--------							--------
+Kc Jc 9c 7h 4c 3h 2c 					      |	3h7h2c4c9cJcKc
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value K)   |	 - The most of a kind is 1 of a kind (at index 0 / value 3)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kc Jc 9c 4c 2c 		      |	 - 5 cards used for hand: 2c4c9cJcKc
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ac As Qc Qs 7s 6s 3s 					      |	3s6s7sQcQsAcAs
+ - Flush in suit s						 - Flush in suit s
+ - The most of a kind is 2 of a kind (at index 0 / value A)   |	 - The most of a kind is 2 of a kind (at index 3 / value Q)
+ - Secondary pair at index 2 (value Q)			      |	 - Secondary pair at index 5 (value A)
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs 7s 6s 3s 		      |	 - 5 cards used for hand: 3s6s7sQsAs
+Hand 2:								Hand 2:
+--------							--------
+Kc Kh Ks 9h 7h 3h 2h 					      |	2h9h3h7hKcKhKs
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 3 of a kind (at index 0 / value K)   |	 - The most of a kind is 3 of a kind (at index 4 / value K)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh 9h 7h 3h 2h 		      |	 - 5 cards used for hand: 2h9h3h7hKh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Qh 0h 8h 6h 4h 2h 					      |	2h4h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 2)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 2h4h6h8h0h
+Hand 2:								Hand 2:
+--------							--------
+Kh Qh 0h 8h 6h 4h 2h 					      |	2h4h6h8h0hQhKh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value K)   |	 - The most of a kind is 1 of a kind (at index 0 / value 2)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 2h4h6h8h0h
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!						      |	Tie
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ad Qd 0d 8d 6d 4d 					      |	4d6d8d0dQdAd
+ - Flush in suit d						 - Flush in suit d
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ad Qd 0d 8d 6d 		      |	 - 5 cards used for hand: 4d6d8d0dQd
+Hand 2:								Hand 2:
+--------							--------
+Ad Kd 0d 8d 6d 4d 					      |	4d6d8d0dKdAd
+ - Flush in suit d						 - Flush in suit d
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ad Kd 0d 8d 6d 		      |	 - 5 cards used for hand: 4d6d8d0dKd
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 2 wins!							Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ad Qd 0d 8d 6d 4d 					      |	4d6d8d0dQdAd
+ - Flush in suit d						 - Flush in suit d
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ad Qd 0d 8d 6d 		      |	 - 5 cards used for hand: 4d6d8d0dQd
+Hand 2:								Hand 2:
+--------							--------
+Ad Jd 0d 8d 6d 4d 					      |	4d6d8d0dJdAd
+ - Flush in suit d						 - Flush in suit d
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ad Jd 0d 8d 6d 		      |	 - 5 cards used for hand: 4d6d8d0dJd
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+As Qs 0s 8s 6s 4s 					      |	4s6s8s0sQsAs
+ - Flush in suit s						 - Flush in suit s
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs 0s 8s 6s 		      |	 - 5 cards used for hand: 4s6s8s0sQs
+Hand 2:								Hand 2:
+--------							--------
+As Qs Js 8s 6s 4s 					      |	4s6s8sJsQsAs
+ - Flush in suit s						 - Flush in suit s
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs Js 8s 6s 		      |	 - 5 cards used for hand: 4s6s8sJsQs
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 2 wins!							Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+As Qs 0s 8s 6s 4s 					      |	4s6s8s0sQsAs
+ - Flush in suit s						 - Flush in suit s
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs 0s 8s 6s 		      |	 - 5 cards used for hand: 4s6s8s0sQs
+Hand 2:								Hand 2:
+--------							--------
+As Qs 9s 8s 6s 4s 					      |	4s6s8s9sQsAs
+ - Flush in suit s						 - Flush in suit s
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Qs 9s 8s 6s 		      |	 - 5 cards used for hand: 4s6s8s9sQs
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ac Qc 0c 8c 6c 4c 					      |	4c6c8c0cQcAc
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ac Qc 0c 8c 6c 		      |	 - 5 cards used for hand: 4c6c8c0cQc
+Hand 2:								Hand 2:
+--------							--------
+Ac Qc 0c 9c 6c 4c 					      |	4c6c9c0cQcAc
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ac Qc 0c 9c 6c 		      |	 - 5 cards used for hand: 4c6c9c0cQc
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 2 wins!							Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ac Qc 0c 8c 6c 4c 					      |	4c6c8c0cQcAc
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ac Qc 0c 8c 6c 		      |	 - 5 cards used for hand: 4c6c8c0cQc
+Hand 2:								Hand 2:
+--------							--------
+Ac Qc 0c 7c 6c 4c 					      |	4c6c7c0cQcAc
+ - Flush in suit c						 - Flush in suit c
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ac Qc 0c 7c 6c 		      |	 - 5 cards used for hand: 4c6c7c0cQc
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Qh 0h 8h 6h 4h 					      |	4h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 4h6h8h0hQh
+Hand 2:								Hand 2:
+--------							--------
+Ah Qh 0h 8h 7h 4h 					      |	4h7h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 7h 		      |	 - 5 cards used for hand: 4h7h8h0hQh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 2 wins!							Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Qh 0h 8h 6h 4h 					      |	4h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 4h6h8h0hQh
+Hand 2:								Hand 2:
+--------							--------
+Ah Qh 0h 8h 5h 4h 					      |	4h5h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 5h 		      |	 - 5 cards used for hand: 4h5h8h0hQh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Qh 0h 8h 6h 4h 					      |	4h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 4h6h8h0hQh
+Hand 2:								Hand 2:
+--------							--------
+Ah Qh 0h 8h 6h 5h 					      |	5h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 5)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 5h6h8h0hQh
+Comparison : 							Comparison : 
+--------------							--------------
+Tie							      |	Hand 2 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Qh 0h 8h 6h 4h 					      |	4h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 4)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 4h6h8h0hQh
+Hand 2:								Hand 2:
+--------							--------
+Ah Qh 0h 8h 6h 3h 					      |	3h6h8h0hQhAh
+ - Flush in suit h						 - Flush in suit h
+ - The most of a kind is 1 of a kind (at index 0 / value A)   |	 - The most of a kind is 1 of a kind (at index 0 / value 3)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: FLUSH				 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Ah Qh 0h 8h 6h 		      |	 - 5 cards used for hand: 3h6h8h0hQh
+Comparison : 							Comparison : 
+--------------							--------------
+Tie							      |	Hand 1 wins!
+============================					============================
+Testcase 7: Trying hands with full houses
+Valgrind returned an error status
+==338== Memcheck, a memory error detector
+==338== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==338== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==338== Command: ./test-eval inp.7.txt
+==338== Parent PID: 337
+==338== 
+==338== Conditional jump or move depends on uninitialised value(s)
+==338==    at 0x402BA7: ranking_to_string (cards.c:13)
+==338==    by 0x4027E5: describe_hand (test-eval.c:69)
+==338==    by 0x402A06: main (test-eval.c:116)
+==338== 
+==338== Conditional jump or move depends on uninitialised value(s)
+==338==    at 0x402BA7: ranking_to_string (cards.c:13)
+==338==    by 0x4027E5: describe_hand (test-eval.c:69)
+==338==    by 0x402A26: main (test-eval.c:119)
+==338== 
+==338== Conditional jump or move depends on uninitialised value(s)
+==338==    at 0x401B47: compare_hands (eval.c:133)
+==338==    by 0x402A7B: main (test-eval.c:124)
+==338== 
+==338== Conditional jump or move depends on uninitialised value(s)
+==338==    at 0x401B58: compare_hands (eval.c:135)
+==338==    by 0x402A7B: main (test-eval.c:124)
+==338== 
+==338== 
+==338== HEAP SUMMARY:
+==338==     in use at exit: 0 bytes in 0 blocks
+==338==   total heap usage: 636 allocs, 636 frees, 21,404 bytes allocated
+==338== 
+==338== All heap blocks were freed -- no leaks are possible
+==338== 
+==338== For counts of detected and suppressed errors, rerun with: -v
+==338== Use --track-origins=yes to see where uninitialised values come from
+==338== ERROR SUMMARY: 40 errors from 4 contexts (suppressed: 0 from 0)
+Testcase 8: Trying hands with 4 of a kind
+Valgrind returned an error status
+==343== Memcheck, a memory error detector
+==343== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==343== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==343== Command: ./test-eval inp.8.txt
+==343== Parent PID: 342
+==343== 
+==343== Conditional jump or move depends on uninitialised value(s)
+==343==    at 0x402BA7: ranking_to_string (cards.c:13)
+==343==    by 0x4027E5: describe_hand (test-eval.c:69)
+==343==    by 0x402A06: main (test-eval.c:116)
+==343== 
+==343== Conditional jump or move depends on uninitialised value(s)
+==343==    at 0x402BA7: ranking_to_string (cards.c:13)
+==343==    by 0x4027E5: describe_hand (test-eval.c:69)
+==343==    by 0x402A26: main (test-eval.c:119)
+==343== 
+==343== Conditional jump or move depends on uninitialised value(s)
+==343==    at 0x401B47: compare_hands (eval.c:133)
+==343==    by 0x402A7B: main (test-eval.c:124)
+==343== 
+==343== Conditional jump or move depends on uninitialised value(s)
+==343==    at 0x401B58: compare_hands (eval.c:135)
+==343==    by 0x402A7B: main (test-eval.c:124)
+==343== 
+==343== 
+==343== HEAP SUMMARY:
+==343==     in use at exit: 0 bytes in 0 blocks
+==343==   total heap usage: 352 allocs, 352 frees, 15,296 bytes allocated
+==343== 
+==343== All heap blocks were freed -- no leaks are possible
+==343== 
+==343== For counts of detected and suppressed errors, rerun with: -v
+==343== Use --track-origins=yes to see where uninitialised values come from
+==343== ERROR SUMMARY: 24 errors from 4 contexts (suppressed: 0 from 0)
+Testcase 9: Trying hands with straight flushes
+ Checking the output 
+Line_3_did_not_match
+Line_5_did_not_match
+Line_7_did_not_match
+Line_8_did_not_match
+Line_11_did_not_match
+Line_13_did_not_match
+Line_15_did_not_match
+Line_16_did_not_match
+Line_23_did_not_match
+Line_25_did_not_match
+Line_27_did_not_match
+Line_28_did_not_match
+Line_31_did_not_match
+Line_33_did_not_match
+Line_35_did_not_match
+Line_36_did_not_match
+Line_43_did_not_match
+Line_45_did_not_match
+Line_46_did_not_match
+Line_47_did_not_match
+Line_48_did_not_match
+Line_51_did_not_match
+Line_53_did_not_match
+Line_55_did_not_match
+Line_56_did_not_match
+Line_63_did_not_match
+Line_65_did_not_match
+Line_67_did_not_match
+Line_68_did_not_match
+Line_71_did_not_match
+Line_75_did_not_match
+Line_76_did_not_match
+Line_83_did_not_match
+Line_85_did_not_match
+Line_87_did_not_match
+Line_88_did_not_match
+Line_91_did_not_match
+Line_95_did_not_match
+Line_96_did_not_match
+Line_99_did_not_match
+Your file did not match the expected ouput
+ - Output did not match, testcase failed
+Hand 1:								Hand 1:
+--------							--------
+As Ks Qs Js 0s 						      |	0sJsQsKsAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value 0)
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Ks Qs Js 0s 		      |	 - 5 cards used for hand: 0sJsQsKsAs
+Hand 2:								Hand 2:
+--------							--------
+Kh Qh Jh 0h 9h 						      |	9h0hJhQhKh
+ - Flush in suit h						 - Flush in suit h
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value 9)
+ - The most of a kind is 1 of a kind (at index 0 / value K)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh Qh Jh 0h 9h 		      |	 - 5 cards used for hand: 9h0hJhQhKh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+As Ks Qs Js 0s 9s 8s 					      |	8s9s0sJsQsKsAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value 8)
+ - Straight flush at index 1				      <
+ - Straight flush at index 2				      <
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Ks Qs Js 0s 		      |	 - 5 cards used for hand: 8s9s0sJsQs
+Hand 2:								Hand 2:
+--------							--------
+Kh Qh Jh 0h 9h 8h 7h 					      |	7h8h9h0hJhQhKh
+ - Flush in suit h						 - Flush in suit h
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value 7)
+ - Straight flush at index 1				      <
+ - Straight flush at index 2				      <
+ - The most of a kind is 1 of a kind (at index 0 / value K)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh Qh Jh 0h 9h 		      |	 - 5 cards used for hand: 7h8h9h0hJh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ac As Kc Ks Qs Js 0s 					      |	0sJsQsKcKsAcAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight at index 0					      |	 - The most of a kind is 2 of a kind (at index 3 / value K)
+ - Straight flush at index 1				      |	 - Secondary pair at index 5 (value A)
+ - The most of a kind is 2 of a kind (at index 0 / value A)   |	 - evaluate_hand's ranking: FLUSH
+ - Secondary pair at index 2 (value K)			      |	 - 5 cards used for hand: 0sJsQsKsAs
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      <
+ - 5 cards used for hand: As Ks Qs Js 0s 		      <
+Hand 2:								Hand 2:
+--------							--------
+Ad Kh Qh Jh Js 0h 9h 					      |	9h0hJsJhQhKhAd
+ - Flush in suit h						 - Flush in suit h
+ - Straight at index 0					      |	 - The most of a kind is 2 of a kind (at index 2 / value J)
+ - Straight flush at index 1				      <
+ - The most of a kind is 2 of a kind (at index 3 / value J)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: Kh Qh Jh 0h 9h 		      |	 - 5 cards used for hand: 9h0hJhQhKh
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!							Hand 1 wins!
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+Ah Kc 5h 4h 3h 2h 					      |	KcAh2h3h4h5h
+ - Flush in suit h						 - Flush in suit h
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value K)
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: 5h 4h 3h 2h Ah 		      |	 - 5 cards used for hand: Ah2h3h4h5h
+Hand 2:								Hand 2:
+--------							--------
+Ac 6c 5c 4c 3c 2c 					      |	Ac2c3c4c5c6c
+ - Flush in suit c						 - Flush in suit c
+ - Straight flush at index 0				      <
+ - Straight flush at index 1				      <
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: 5c 4c 3c 2c Ac 		      |	 - 5 cards used for hand: Ac2c3c4c5c
+Comparison : 							Comparison : 
+--------------							--------------
+Tie								Tie
+============================					============================
+Hand 1:								Hand 1:
+--------							--------
+As Ks Qs Js 0s 						      |	0sJsQsKsAs
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0				      |	 - The most of a kind is 1 of a kind (at index 0 / value 0)
+ - The most of a kind is 1 of a kind (at index 0 / value A)   <
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: As Ks Qs Js 0s 		      |	 - 5 cards used for hand: 0sJsQsKsAs
+Hand 2:								Hand 2:
+--------							--------
+As 5s 4s 3s 2s 						      |	As2s3s4s5s
+ - Flush in suit s						 - Flush in suit s
+ - Straight flush at index 0				      <
+ - The most of a kind is 1 of a kind (at index 0 / value A)	 - The most of a kind is 1 of a kind (at index 0 / value A)
+ - No secondary pair						 - No secondary pair
+ - evaluate_hand's ranking: STRAIGHT_FLUSH		      |	 - evaluate_hand's ranking: FLUSH
+ - 5 cards used for hand: 5s 4s 3s 2s As 		      |	 - 5 cards used for hand: As2s3s4s5s
+Comparison : 							Comparison : 
+--------------							--------------
+Hand 1 wins!						      |	Hand 2 wins!
+============================					============================
+Testcase 10: Trying each type of hand ranking
+Valgrind returned an error status
+==361== Memcheck, a memory error detector
+==361== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==361== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==361== Command: ./test-eval inp.10.txt
+==361== Parent PID: 360
+==361== 
+==361== Conditional jump or move depends on uninitialised value(s)
+==361==    at 0x402BA7: ranking_to_string (cards.c:13)
+==361==    by 0x4027E5: describe_hand (test-eval.c:69)
+==361==    by 0x402A26: main (test-eval.c:119)
+==361== 
+==361== Conditional jump or move depends on uninitialised value(s)
+==361==    at 0x401B47: compare_hands (eval.c:133)
+==361==    by 0x402A7B: main (test-eval.c:124)
+==361== 
+==361== Conditional jump or move depends on uninitialised value(s)
+==361==    at 0x401B58: compare_hands (eval.c:135)
+==361==    by 0x402A7B: main (test-eval.c:124)
+==361== 
+==361== Invalid read of size 8
+==361==    at 0x401A02: build_hand_from_match (eval.c:119)
+==361==    by 0x4023F3: evaluate_hand (eval.c:286)
+==361==    by 0x4027DB: describe_hand (test-eval.c:68)
+==361==    by 0x402A26: main (test-eval.c:119)
+==361==  Address 0x520ce18 is 0 bytes after a block of size 40 alloc'd
+==361==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==361==    by 0x400FD1: add_card_to (deck-c4.c:29)
+==361==    by 0x403128: hand_from_string (input.c:49)
+==361==    by 0x4029A0: main (test-eval.c:111)
+==361== 
+==361== Invalid read of size 4
+==361==    at 0x401A05: build_hand_from_match (eval.c:119)
+==361==    by 0x4023F3: evaluate_hand (eval.c:286)
+==361==    by 0x4027DB: describe_hand (test-eval.c:68)
+==361==    by 0x402A26: main (test-eval.c:119)
+==361==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==361== 
+==361== 
+==361== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==361==  Access not within mapped region at address 0x0
+==361==    at 0x401A05: build_hand_from_match (eval.c:119)
+==361==    by 0x4023F3: evaluate_hand (eval.c:286)
+==361==    by 0x4027DB: describe_hand (test-eval.c:68)
+==361==    by 0x402A26: main (test-eval.c:119)
+==361==  If you believe this happened as a result of a stack
+==361==  overflow in your program's main thread (unlikely but
+==361==  possible), you can try to increase the size of the
+==361==  main thread stack using the --main-stacksize= flag.
+==361==  The main thread stack size used in this run was 8388608.
+==361== 
+==361== HEAP SUMMARY:
+==361==     in use at exit: 880 bytes in 17 blocks
+==361==   total heap usage: 318 allocs, 301 frees, 14,612 bytes allocated
+==361== 
+==361== LEAK SUMMARY:
+==361==    definitely lost: 0 bytes in 0 blocks
+==361==    indirectly lost: 0 bytes in 0 blocks
+==361==      possibly lost: 0 bytes in 0 blocks
+==361==    still reachable: 880 bytes in 17 blocks
+==361==         suppressed: 0 bytes in 0 blocks
+==361== Rerun with --leak-check=full to see details of leaked memory
+==361== 
+==361== For counts of detected and suppressed errors, rerun with: -v
+==361== Use --track-origins=yes to see where uninitialised values come from
+==361== ERROR SUMMARY: 14 errors from 5 contexts (suppressed: 0 from 0)
+
+Overall Grade: F
