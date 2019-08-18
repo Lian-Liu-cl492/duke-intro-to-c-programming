@@ -116,8 +116,8 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 
   size_t index = 0;
   for(int i=0; i<5-n; i++){
-//    while(hand->cards[index]->value == ans.cards[0]->value)
-//      index++;
+    while(hand->cards[index]->value == ans.cards[0]->value)
+      index++;
     ans.cards[n+i] = hand->cards[index];
     index++;
   }
