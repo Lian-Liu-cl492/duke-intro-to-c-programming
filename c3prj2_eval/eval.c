@@ -4,15 +4,15 @@
 #include <assert.h>
 
 int card_ptr_comp(const void * vp1, const void * vp2) {
-  const card_t * card1 = vp1;
-  const card_t * card2 = vp2;
-  if(card1->value < card2->value)
+  const card_t * const * card1 = vp1;
+  const card_t * const * card2 = vp2;
+  if((*card1)->value < (*card2)->value)
     return 1;
-  else if(card1->value > card2->value)
+  else if((*card1)->value > (*card2)->value)
     return -1;
-  else if(card1->suit < card2->suit)
+  else if((*card1)->suit < (*card2)->suit)
     return 1;
-  else if(card1->suit < card2->suit)
+  else if((*card1)->suit < (*card2)->suit)
     return -1;
   return 0;
 }
@@ -109,8 +109,9 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
-  for(int i=0; i<n; i++)
+  for(int i=0; i<n; i++){
     ans.cards[i] = hand->cards[idx+i];
+  }
   if(n==0)
     ans.cards[0] = hand->cards[0];
 
