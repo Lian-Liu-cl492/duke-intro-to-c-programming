@@ -140,9 +140,9 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
     return 1;
   for(int i=0; i<5; i++){
    if(hand1_eval.cards[i]->value > hand2_eval.cards[i]->value)
-      return -1;
-    if(hand1_eval.cards[i]->value < hand2_eval.cards[i]->value)
       return 1;
+    if(hand1_eval.cards[i]->value < hand2_eval.cards[i]->value)
+      return -1;
   }
   return 0;
 }
