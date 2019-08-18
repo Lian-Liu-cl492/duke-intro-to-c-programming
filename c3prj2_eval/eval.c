@@ -122,7 +122,6 @@ hand_eval_t build_hand_from_match(deck_t * hand,
     while(hand->cards[index]->value == ans.cards[0]->value)
       index++;
     ans.cards[n+i] = hand->cards[index];
-    printf("%d\n", ans.cards[n+i]->value);
     index++;
   }
   return ans;
