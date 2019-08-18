@@ -109,6 +109,7 @@ hand_eval_t build_hand_from_match(deck_t * hand,
 				  size_t idx) {
 
   hand_eval_t ans;
+  ans.ranking = what;
   for(int i=0; i<n; i++){
     ans.cards[i] = hand->cards[idx+i];
   }
