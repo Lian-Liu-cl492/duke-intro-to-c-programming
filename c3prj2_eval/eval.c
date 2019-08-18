@@ -88,7 +88,7 @@ int is_ace_low_straight_at(deck_t * hand, size_t index, suit_t fs){
     return 0;
 
   size_t index_five = index;
-  while(hand->cards[index_five]->value != 5 && (!need_flush || hand->cards[index_five]->suit == fs)){
+  while(hand->cards[index_five]->value != 5 || (need_flush && hand->cards[index_five]->suit != fs)){
     index_five++;
     if(index_five>=hand->n_cards)
       return 0;
