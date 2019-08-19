@@ -19,7 +19,7 @@ int most_freq(int* freq_count){
     if(e_index<freq_count[i])
       e_index = i;
   }
-  int key = e_index + ((e_index >=7) ? -7 : 19);
+  int key = e_index + ((e_index >=7) ? -4 : 22);
   return key;
 }
 
