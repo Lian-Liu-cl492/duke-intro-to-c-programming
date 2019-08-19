@@ -17,9 +17,9 @@ int most_freq(int* freq_count){
   int e_index = 0;
   for(int i=0; i<26; i++){
     if(e_index<freq_count[i])
-      e_index = freq_count[i];
+      e_index = i;
   }
-  int key = e_index + (e_index >=7) ? -7 : 19;
+  int key = e_index + ((e_index >=7) ? -7 : 19);
   return key;
 }
 
@@ -40,5 +40,5 @@ int main(int argc, char ** argv) {
     perror("Failed to close the input file!");    
     return EXIT_FAILURE;  
   }  
-  return key;
+  printf("%d",  key);
 }
