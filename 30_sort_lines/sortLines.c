@@ -21,7 +21,7 @@ void readResult(FILE * f){
   size_t num_lines = 0;
   char * line = NULL;
   size_t sz =0;
-  while(getline(&line, &sz, f)){
+  while(getline(&line, &sz, f) >= 0){
     num_lines++;
     lines = realloc(lines, sizeof(*lines) * num_lines);
     lines[num_lines - 1] = line;
