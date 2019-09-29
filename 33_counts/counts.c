@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "counts.h"
+
 counts_t * createCounts(void) {
-  //WRITE ME
   counts_t * counts = malloc(sizeof(*counts));
   counts->array = malloc(sizeof(*counts->array));
   counts->size = 1;
@@ -12,8 +12,8 @@ counts_t * createCounts(void) {
   counts->array[0]->num = 0;
   return counts;
 }
+
 void addCount(counts_t * c, const char * name) {
-  //WRITE ME
   if(name == NULL){
     ++(c->array[0]->num);
     return;
@@ -30,8 +30,8 @@ void addCount(counts_t * c, const char * name) {
   strcpy(c->array[c->size -1]->name, name);
   c->array[c->size -1]->num = 1;
 }
+
 void printCounts(counts_t * c, FILE * outFile) {
-  //WRITE ME
   for(int i=1; i<c->size; i++){
     fprintf(outFile, "%s: %zu\n", c->array[i]->name, c->array[i]->num);
   }
@@ -41,7 +41,6 @@ void printCounts(counts_t * c, FILE * outFile) {
 }
 
 void freeCounts(counts_t * c) {
-  //WRITE ME
   free(c->array[0]);
   for(int i=1; i<c->size; i++){
    free(c->array[i]->name);
