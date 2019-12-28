@@ -17,9 +17,13 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
   
   c = createCounts();
   size_t linesz = 0;
-  while (getline(&line, &linesz, f) >= 0) {
+  ssize_t read;
+  while ((read = getline(&line, &linesz, f)) >= 0) {
+    if (read > 0 && line[read-1] == '\n'){
+      line[read-1] = '\0';
+    }
     addCount(c, lookupValue(kvPairs, line));
-    free(line);
+    line = NULL;
     linesz = 0;
   }
   free(line);
