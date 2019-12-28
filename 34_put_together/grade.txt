@@ -1,4 +1,4 @@
-Grading at Sat Dec 28 23:13:16 UTC 2019
+Grading at Sat Dec 28 23:23:43 UTC 2019
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
@@ -13,35 +13,117 @@ testcase1 passed, your program successfully indicated a failure
 valgrind was clean
 #################################################
 testcase2:
-Line_1_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list1a.txt.counts with answer
 Your output is correct
 Comparing file list1b.txt.counts with answer
-Line_1_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind reported errors
+valgrind was not clean
+==466== Memcheck, a memory error detector
+==466== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==466== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==466== 
+==466== Parent PID: 465
+==466== 
+==466== 
+==466== HEAP SUMMARY:
+==466==     in use at exit: 2,520 bytes in 21 blocks
+==466==   total heap usage: 182 allocs, 161 frees, 34,144 bytes allocated
+==466== 
+==466== 2,520 bytes in 21 blocks are definitely lost in loss record 1 of 1
+==466==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==466==    by 0x4EA89E7: getdelim (iogetdelim.c:62)
+==466==    by 0x400E03: countFile (main.c:21)
+==466==    by 0x400EB6: main (main.c:47)
+==466== 
+==466== LEAK SUMMARY:
+==466==    definitely lost: 2,520 bytes in 21 blocks
+==466==    indirectly lost: 0 bytes in 0 blocks
+==466==      possibly lost: 0 bytes in 0 blocks
+==466==    still reachable: 0 bytes in 0 blocks
+==466==         suppressed: 0 bytes in 0 blocks
+==466== 
+==466== For counts of detected and suppressed errors, rerun with: -v
+==466== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 #################################################
 testcase3:
-Line_1_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list2a.txt.counts with answer
 Your output is correct
 Comparing file list2b.txt.counts with answer
-Line_1_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
 Comparing file list2c.txt.counts with answer
-Line_1_did_not_match
-Your file did not match the expected ouput
-Your output is incorrect
+Your file matched the expected output
+Your output is correct
+  - Valgrind reported errors
+valgrind was not clean
+==478== Memcheck, a memory error detector
+==478== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==478== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==478== 
+==478== Parent PID: 477
+==478== 
+==478== 
+==478== HEAP SUMMARY:
+==478==     in use at exit: 2,520 bytes in 21 blocks
+==478==   total heap usage: 152 allocs, 131 frees, 41,676 bytes allocated
+==478== 
+==478== 2,520 bytes in 21 blocks are definitely lost in loss record 1 of 1
+==478==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==478==    by 0x4EA89E7: getdelim (iogetdelim.c:62)
+==478==    by 0x400E03: countFile (main.c:21)
+==478==    by 0x400EB6: main (main.c:47)
+==478== 
+==478== LEAK SUMMARY:
+==478==    definitely lost: 2,520 bytes in 21 blocks
+==478==    indirectly lost: 0 bytes in 0 blocks
+==478==      possibly lost: 0 bytes in 0 blocks
+==478==    still reachable: 0 bytes in 0 blocks
+==478==         suppressed: 0 bytes in 0 blocks
+==478== 
+==478== For counts of detected and suppressed errors, rerun with: -v
+==478== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
 #################################################
 testcase4:
-Line_1_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Comparing file list3a.txt.counts with answer
 Your output is correct
-  - Valgrind was clean (no errors, no memory leaks)
-valgrind was clean
+  - Valgrind reported errors
+valgrind was not clean
+==491== Memcheck, a memory error detector
+==491== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==491== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==491== 
+==491== Parent PID: 490
+==491== 
+==491== 
+==491== HEAP SUMMARY:
+==491==     in use at exit: 960 bytes in 7 blocks
+==491==   total heap usage: 84 allocs, 77 frees, 242,252 bytes allocated
+==491== 
+==491== 240 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==491==    at 0x4C2FD5F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==491==    by 0x4EA8A2A: getdelim (iogetdelim.c:102)
+==491==    by 0x400E03: countFile (main.c:21)
+==491==    by 0x400EB6: main (main.c:47)
+==491== 
+==491== 720 bytes in 6 blocks are definitely lost in loss record 2 of 2
+==491==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==491==    by 0x4EA89E7: getdelim (iogetdelim.c:62)
+==491==    by 0x400E03: countFile (main.c:21)
+==491==    by 0x400EB6: main (main.c:47)
+==491== 
+==491== LEAK SUMMARY:
+==491==    definitely lost: 960 bytes in 7 blocks
+==491==    indirectly lost: 0 bytes in 0 blocks
+==491==      possibly lost: 0 bytes in 0 blocks
+==491==    still reachable: 0 bytes in 0 blocks
+==491==         suppressed: 0 bytes in 0 blocks
+==491== 
+==491== For counts of detected and suppressed errors, rerun with: -v
+==491== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
 
-Overall Grade: D
+Overall Grade: B
