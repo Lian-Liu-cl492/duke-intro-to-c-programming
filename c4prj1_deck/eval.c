@@ -157,11 +157,11 @@ int compare_hands(deck_t * hand1, deck_t * hand2) {
 unsigned * get_match_counts(deck_t * hand){
   unsigned count[13] = {0};
   for(int i=0; i<hand->n_cards; i++){
-    count[hand->cards[i]->value - 2]++;  // value starts from 2 to 14
+    count[hand->cards[i]->value % 13]++;  // value starts from 2 to 14
   }
-  unsigned * match_counts = malloc(sizeof(*match_counts) * 13);
+  unsigned * match_counts = malloc(sizeof(*match_counts) * hand->n_cards);
   for(int i=0; i<hand->n_cards; i++){
-    match_counts[i] = count[hand->cards[i]->value - 2];
+    match_counts[i] = count[hand->cards[i]->value % 13];
   }
 return match_counts;
 }
