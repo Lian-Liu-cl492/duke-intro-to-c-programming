@@ -161,7 +161,7 @@ unsigned * get_match_counts(deck_t * hand){
   }
   unsigned * match_counts = malloc(sizeof(*match_counts) * 13);
   for(int i=0; i<hand->n_cards; i++){
-    match_counts[i] = count[hand->cards[i]->value];
+    match_counts[i] = count[hand->cards[i]->value -1];
   }
 return match_counts;
 }
