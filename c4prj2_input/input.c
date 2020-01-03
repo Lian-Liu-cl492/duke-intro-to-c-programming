@@ -4,7 +4,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t * hand = malloc(sizeof(*hand));
   hand->cards = NULL;
   hand->n_cards = 0;
-  while(*str != '\n' && *(str+1) != '\n' && *(str+2) !+- '\n'){
+  while(*str != '\n' && *(str+1) != '\n' && *(str+2) != '\n'){
     printf("%c %c %c\n", *str, *(str+1), *(str+2));
     if(*str == '?'){
       add_empty_card(hand);
