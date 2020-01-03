@@ -7,6 +7,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   while(*str != '\n' && *(str+1) != '\n' && *(str+2) != '\n'){
     if(*str == '?'){
       add_empty_card(hand);
+      add_future_card(fc, atoi(*(str+1)), hand->cards[hand->n_cards - 1])
     } else {
       card_t c = card_from_letters(*str, *(str+1));
       add_card_to(hand, c);
