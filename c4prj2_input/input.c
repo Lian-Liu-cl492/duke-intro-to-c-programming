@@ -25,29 +25,6 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     ptr = strtok(NULL, delim);
   }
   free(p);
-
-/*
-  const char * p1 = str;
-  const char * p2 = strchr(str, ' ');
-  while(p1 != '\0'){
-    fprintf(stderr, "p1 = %s\n", p1);
-    if(*p1 == '?'){
-      add_empty_card(hand);
-      char * s = strndup(p1+1, p2-p1-1);
-      fprintf(stderr, "s = %s\n", s);
-      add_future_card(fc, atoi(s), hand->cards[hand->n_cards - 1]);
-      free(s);
-    } else {
-      card_t c = card_from_letters(*p1, *(p1+1));
-      add_card_to(hand, c);
-    }
-    p1 = p2+1;
-    p2 = strchr(p2+1, ' ');
-    if(p2 == NULL){
-      p2 = strchr(p1, '\n');
-    }
-  }
-*/
   if(hand->n_cards < 5){
     perror("Number of cards is less than five!");
     exit(EXIT_FAILURE);
