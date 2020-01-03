@@ -4,13 +4,13 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t * hand = malloc(sizeof(*hand));
   hand->cards = NULL;
   hand->n_cards = 0;
-  while(*str != '\n'){
+  while(*str != '\n' && *(str+1) != '\n' && *(str+2) !+- '\n'){
     printf("%c %c %c\n", *str, *(str+1), *(str+2));
     if(*str == '?'){
       add_empty_card(hand);
     } else {
-//      card_t c = card_from_letters(*str, *(str+1));
-//      add_card_to(hand, c);
+      card_t c = card_from_letters(*str, *(str+1));
+      add_card_to(hand, c);
     }
     str += 3;
   }
