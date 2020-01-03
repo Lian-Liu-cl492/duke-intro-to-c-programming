@@ -9,8 +9,8 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
     if(*str == '?'){
       add_empty_card(hand);
     } else {
-      card_t c = card_from_letters(*str, *(str+1));
-      add_card_to(hand, c);
+//      card_t c = card_from_letters(*str, *(str+1));
+//      add_card_to(hand, c);
     }
     str += 3;
   }
