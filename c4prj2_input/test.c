@@ -8,6 +8,8 @@ int main(void){
   size_t num = 0;
   size_t * n = &num;
   future_cards_t * fc = malloc(sizeof(*fc));
+  fc->decks = malloc(sizeof(*(fc->decks)));
+  fc->n_decks = 0;
   deck_t ** d = read_input(f, n, fc);
   printf("%zu\n", *n);
   for(size_t i=0; i<*n; i++){
