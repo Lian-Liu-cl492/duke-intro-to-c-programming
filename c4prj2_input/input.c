@@ -5,11 +5,12 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   hand->cards = NULL;
   hand->n_cards = 0;
   while(*str != '\n'){
-    card_t c = card_from_letters(*str, *(str+1));
-    hand->cards = realloc(hand->cards, sizeof(*(hand->cards)) * ++hand->n_cards);
-    hand->cards[hand->n_cards - 1] = malloc(sizeof(*(hand->cards[hand->n_cards - 1])));
-    hand->cards[hand->n_cards - 1]->value = c.value;
-    hand->cards[hand->n_cards - 1]->suit = c.suit; 
+    if(*str == '?'){
+      add_empty_card(hand);
+    } else {
+      card_t c = card_from_letters(*str, *(str+1));
+      add_card_to(hand, c);
+    }
     str += 3;
   }
   if(hand->n_cards < 5){
