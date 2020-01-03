@@ -5,16 +5,18 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t * hand = malloc(sizeof(*hand));
   hand->cards = NULL;
   hand->n_cards = 0;
-  const char * p = str;
-  while (*p != '\n' && *(p+1) != '\n' && *(p+2) != '\n'){
-    if(*p == '?'){
+  const char * p1 = str;
+  const char * p2 = strchr(str, ' ');
+  while(p1 != NULL){
+    if(*p1 == '?'){
       add_empty_card(hand);
-      add_future_card(fc, atoi(&*(p+1)), hand->cards[hand->n_cards - 1]);
+      add_future_card(fc, atoi(&*(p1+1)), hand->cards[hand->n_cards - 1]);
     } else {
-      card_t c = card_from_letters(*p, *(p+1));
+      card_t c = card_from_letters(*p1, *(p1+1));
       add_card_to(hand, c);
     }
-    p += 3;
+    p1 = (p2 == NULL ) ? p2 : p2+1;
+    p2 = (p2 == NULL) ? p2 : strchr(p2+1, ' ');
   }
   if(hand->n_cards < 5){
     perror("Number of cards is less than five!");
