@@ -1,4 +1,4 @@
-Grading at Fri Jan  3 06:07:23 UTC 2020
+Grading at Fri Jan  3 06:08:15 UTC 2020
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
