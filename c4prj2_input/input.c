@@ -8,6 +8,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   const char * p1 = str;
   const char * p2 = strchr(str, ' ');
   while(p1 != NULL){
+    fprintf(stderr, "p1 = %s\n", p1);
     if(*p1 == '?'){
       add_empty_card(hand);
       char * s = strndup(p1+1, p2-p1-2);
