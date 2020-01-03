@@ -43,8 +43,8 @@ int main(int argc, char ** argv) {
     future_cards_from_deck(deck, fc);
     int winner_idx = 0;
     int tie = 0;
-    for(size_t i=0; i<*(n_hands)+1 ; i++){
-      if(compare_hands(hands[winner_idx], hands[i]) > 1){
+    for(size_t i=1; i<*n_hands ; i++){  // Start from one to avoid tie with itself
+      if(compare_hands(hands[winner_idx], hands[i]) == -1){
         winner_idx = i;
         tie = 0;
       } else if (compare_hands(hands[winner_idx], hands[i]) == 0){
@@ -59,7 +59,7 @@ int main(int argc, char ** argv) {
   }
 
   for(size_t i=0; i<*n_hands ; i++){
-    printf("Hand %zu won %u / %u times (%.2f%%)\n", i, n_wins[i], n_trials, n_wins[i]/(double)n_trials);
+    printf("Hand %zu won %u / %u times (%.2f%%)\n", i, n_wins[i], n_trials, 100*n_wins[i]/(double)n_trials);
   }
   printf("And there were %u ties\n", n_wins[*n_hands]);
   

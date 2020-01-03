@@ -1,0 +1,15 @@
+./poker provided-tests/test01.txt
+./poker provided-tests/test02.txt
+./poker provided-tests/test03.txt
+./poker provided-tests/test04.txt
+./poker provided-tests/test05.txt
+./poker provided-tests/test06.txt
+./poker provided-tests/test07.txt
+./poker provided-tests/test08.txt
+./poker provided-tests/test09.txt
+./poker provided-tests/test10.txt
+./poker provided-tests/test11.txt
+./poker provided-tests/test12.txt
+./poker provided-tests/test13.txt
+./poker provided-tests/test14.txt
+./poker provided-tests/test15.txt
