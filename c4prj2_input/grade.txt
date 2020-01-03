@@ -1,0 +1,19 @@
+Grading at Fri Jan  3 02:01:24 UTC 2020
+Compiling cards.c -> cards.o
+Compiling deck.c -> deck.o
+Compiling input.c -> input.o
+input.c: In function ‘hand_from_string’:
+input.c:7:17: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   char * curr = str;
+                 ^
+input.c:10:36: error: incompatible types when assigning to type ‘card_t * {aka struct card_tag *}’ from type ‘card_t {aka struct card_tag}’
+     hand->cards[hand->n_cards - 1] = card_from_letters(*curr, *(curr+1));
+                                    ^
+input.c: In function ‘read_input’:
+input.c:29:10: error: array subscript is not an integer
+     hands[n_hands - 1] = hand;
+          ^
+cc1: all warnings being treated as errors
+Compilation of input.c failed
+
+Overall Grade: F
