@@ -1,18 +1,27 @@
-Grading at Fri Jan  3 02:01:24 UTC 2020
+Grading at Fri Jan  3 02:08:57 UTC 2020
 Compiling cards.c -> cards.o
 Compiling deck.c -> deck.o
 Compiling input.c -> input.o
 input.c: In function ‘hand_from_string’:
-input.c:7:17: error: initialization discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
-   char * curr = str;
-                 ^
-input.c:10:36: error: incompatible types when assigning to type ‘card_t * {aka struct card_tag *}’ from type ‘card_t {aka struct card_tag}’
-     hand->cards[hand->n_cards - 1] = card_from_letters(*curr, *(curr+1));
-                                    ^
+input.c:10:45: error: incompatible type for argument 1 of ‘malloc’
+     hand->cards[hand->n_cards - 1] = malloc(*(hand->cards[hand->n_cards - 1]));
+                                             ^
+In file included from deck.h:3:0,
+                 from input.h:4,
+                 from input.c:1:
+/usr/include/stdlib.h:466:14: note: expected ‘size_t {aka long unsigned int}’ but argument is of type ‘card_t {aka struct card_tag}’
+ extern void *malloc (size_t __size) __THROW __attribute_malloc__ __wur;
+              ^
+input.c:11:45: error: called object is not a function or function pointer
+     hand->cards[hand->n_cards - 1]->value = c.value();
+                                             ^
+input.c:12:44: error: called object is not a function or function pointer
+     hand->cards[hand->n_cards - 1]->suit = c.suit(); 
+                                            ^
 input.c: In function ‘read_input’:
-input.c:29:10: error: array subscript is not an integer
-     hands[n_hands - 1] = hand;
-          ^
+input.c:31:11: error: cast from pointer to integer of different size [-Werror=pointer-to-int-cast]
+     hands[(int)n_hands - 1] = hand;
+           ^
 cc1: all warnings being treated as errors
 Compilation of input.c failed
 
