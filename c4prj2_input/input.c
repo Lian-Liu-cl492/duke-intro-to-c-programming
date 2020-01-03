@@ -5,8 +5,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
   deck_t * hand = malloc(sizeof(*hand));
   hand->cards = NULL;
   hand->n_cards = 0;
-  const char * p;
-  p = strchr(str, ' ');
+  const char * p = str;
   while (p != NULL){
     if(*p == '?'){
       add_empty_card(hand);
@@ -15,7 +14,7 @@ deck_t * hand_from_string(const char * str, future_cards_t * fc){
       card_t c = card_from_letters(*p, *(p+1));
       add_card_to(hand, c);
     }
-    p = strchr(p+1, ' ');
+    p = strchr(p+1, ' ') + 1;
   }
   if(hand->n_cards < 5){
     perror("Number of cards is less than five!");
